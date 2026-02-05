@@ -6,7 +6,7 @@ Et Le web Scraping , c'est une technique qui consiste à utiliser un robot pour 
 
 l'autre en python.
 
-# LES EXERCICES 
+## LES EXERCICES 
 
 Exercice 1:
 
@@ -26,7 +26,7 @@ Collaborateurs :
     -pierregidi445@gmail.com
     -kossiviayaodavid@gmail.com
 
-# GESTION_STOCK
+## GESTION_STOCK
 
 Ce code permet de gérer un inventaire de produits, d'effectuer des mises à jour de stock et de traiter des commandes clients avec vérification automatique des disponibilités.
 
@@ -38,6 +38,15 @@ Avant de lancer le script de scraping :
 
 On à clôner le projet inggbaabrief3-main en téléchargeant d'abord le dossier dans le github , désiper , copier et coller dans wamp qui est un serveur après installer le beautifulsoup. 
 
+    import requests
+    from bs4 import BeautifulSoup
+    import os
+    
+    url = "http://localhost/inggbaabrief3-main/index.html"
+    
+    response = requests.get(url)
+    response.encoding = 'utf-8'
+    
 Bibliothèques d'Extraction :
 
   BeautifulSoup4 ou Scrapy pour le parsing du code HTML.
@@ -46,27 +55,13 @@ Bibliothèques d'Extraction :
 
 ### Prerequis python
 
-1. Environnement Python
-Version : Python 3.6 ou plus récent. Le code utilise des f-strings (ex: f"Prix : {self.prix}"), une syntaxe qui n'est pas supportée par les versions plus anciennes.
+Class produit : définir les entiers idantifiant du produit , nom du produit , prix du produit et quantité du produit . 
 
-Installation : Vérifie ta version avec la commande :
+Class stock : C'est le "cerveau" de mon application . c'est elle qui gère l'inventaire, permet d'ajouter des articles, de les modifier ou de les supprimer. Elle utilise un dictionnaire pour stocker les objets, ce qui rend la recherche très rapide.
 
-    Bash
-    python --version
-    
-2. Éditeur de texte (IDE)
-Bien que le Bloc-notes suffise, il est fortement recommandé d'utiliser un éditeur qui gère l'indentation (les espaces en début de ligne), car Python y est très sensible :
+Class commande : on défini la commande son id , le produit et la quantité après on retourne pour afficher.
 
-VS Code (recommandé avec l'extension Python).
-
-PyCharm.
-
-IDLE (installé par défaut avec Python).
-
-### Prérequis Conceptuels (POO)
-Pour comprendre et modifier ce code, tu dois maîtriser quelques notions de Programmation Orientée Objet (POO) :
-
-Les Classes et Instances : Comprendre que Produit est le moule et produit1 est l'objet réel créé à partir de ce moule.
+Class Gestion de stock : on vérifie si le produit existe dans le dictionnaire de stock .
 
 Les Méthodes Spéciales :
 
@@ -80,33 +75,59 @@ L'Encapsulation : Le fait que la classe GestionDeStock contienne un objet de typ
 Exemple de Menu Interactif
 
     Python
-    while True:
-    print("\n1. Afficher Stock | 2. Ajouter Produit | 3. Passer Commande | 4. Quitter")
-    choix = input("Votre choix : ")
+       class GestionDeStock:
+        def __init__(self):
+            self.stock = Stock()
+            self.commandes = []
+    
+    # On vérifie si le produit existe dans le dictionnaire du stock
+    def ajouter_commande(self, commande):
+        
+        if commande.produit.id in self.stock.Prd:
+            produit_en_stock = self.stock.Prd[commande.produit.id]
+            
+            if produit_en_stock.quantite >= commande.quantite:
+                produit_en_stock.quantite -= commande.quantite
+                self.commandes.append(commande)
+                print(f'Commande {commande.id} validée.')
+            else:
+                print(f'Erreur : Stock insuffisant pour {produit_en_stock.nom}.')
+        else:
+            print('Erreur : Produit non retrouvé.')
 
-    if choix == "1":
-        gestion_de_stock.stock.afficher_produits()
-    elif choix == "2":
-        id_p = int(input("ID : "))
-        nom_p = input("Nom : ")
-        prix_p = float(input("Prix : "))
-        qte_p = int(input("Quantité : "))
-        gestion_de_stock.stock.ajouter_produit(Produit(id_p, nom_p, prix_p, qte_p))
-    elif choix == "4":
-        print("Au revoir !")
-        break
+    def afficher_commandes(self):
+        print("\n Historique ")
+        for commande in self.commandes:
+            print(commande)
 
- Exemple de mise en forme pour ton code :
+            
+ Exemple de mise en forme pour ton code scraping :
 
     Python
-    # --- Exemple de structure pour l'extraction ---
-    import os
-    from bs4 import BeautifulSoup
+    if response.status_code == 200:
+        html = response.text  
+    f = open("Franck.html", "w")
+    f.write(html)
+    f.close()
+    
+    # Extraire les images
+    images = soup.find_all("img")
+    for image in images :
+        print(image['src'])
 
-    def extraire_donnees_locales(chemin_fichier):
-    with open(chemin_fichier, 'r', encoding='utf-8') as f:
-        soup = BeautifulSoup(f, 'html.parser')
-    
-    # Extraction des images, titres, etc.
-    # [Ton code ici...]
-    
+    #Extraire les titres
+    titres = soup.find_all(['h1', 'h2'])
+    for titre in titres :
+        print(titre.text.strip())
+    #Extraire les paragraphes
+    paragraphes = soup.find_all('p')
+    for paragraphe in paragraphes:
+        print(paragraphe.text.strip())
+    #Extraire les formulaires
+    formulaires = soup.find_all('form')
+    for formulaire in formulaires:
+        print(formulaire)
+    #Extraire les liens
+    liens = soup.find_all('a')
+    for lien in liens:
+        print(lien['href'])
