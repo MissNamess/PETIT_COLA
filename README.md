@@ -1,6 +1,30 @@
-# SCRAPING_CODE
+# EXAMEN DE FINI DE MODULE PYTHON 
 
-Développement d’un script de web scraping local permettant l’extraction structurée de données multimédias et textuelles. Le processus inclut la récupération des assets (images), des métadonnées (titres et paragraphes), ainsi que l'analyse de l'architecture de navigation (liens) et des éléments d'interaction (formulaires).
+Pour définr simple, Python, c'est un langage de programmation. C'est l'outil qui permet de donner des instructions à un ordinateur pour qu'il réalise des tâches.
+
+Et Le web Scraping , c'est une technique qui consiste à utiliser un robot pour extraire automatiquement des données d'un site web. A la suite nous avons eu à traiter deux exercices un en web scraping et 
+
+l'autre en python.
+
+# LES EXERCICES 
+
+Exercice 1:
+
+Scrapper un site en local en ressorttant les images , les titres , les paragraphes , le formulaire ainsi les liens .
+
+Exercice 2 :
+
+Utiliser la logique d'une application de gestion de stock en vérifiant tout les concepts 
+
+
+Ces exercices ont été faite en groupe de quatre (4) personnes 
+
+Collaborateurs : 
+
+    -reinenamessi8@gmail.com
+    -francinebongor@gmail.com 
+    -pierregidi445@gmail.com
+    -kossiviayaodavid@gmail.com
 
 # GESTION_STOCK
 
@@ -12,21 +36,13 @@ Ce code permet de gérer un inventaire de produits, d'effectuer des mises à jou
 
 Avant de lancer le script de scraping :
 
-Environnement Python : Une version stable de Python (3.8 ou supérieure) installée sur ta machine.
-
-Gestionnaire de paquets (pip) : Pour installer les bibliothèques tierces.
+On à clôner le projet inggbaabrief3-main en téléchargeant d'abord le dossier dans le github , désiper , copier et coller dans wamp qui est un serveur après installer le beautifulsoup. 
 
 Bibliothèques d'Extraction :
 
   BeautifulSoup4 ou Scrapy pour le parsing du code HTML.
 
   Requests pour envoyer les requêtes HTTP (si le site n'est pas purement local).
-
-Selenium (optionnel) si le site local utilise beaucoup de JavaScript pour charger ses formulaires.
-
-Navigateur & Driver : Un navigateur (Chrome/Firefox) et son driver correspondant (ex: ChromeDriver) si tu utilises Selenium.
-
-Structure du fichier source : Le fichier HTML local doit être accessible en lecture dans le répertoire du script.
 
 ### Prerequis python
 
