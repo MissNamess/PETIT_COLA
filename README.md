@@ -6,7 +6,7 @@ Encadrement académiqueModule :
 
 - Programmation Python
 - Institution : École Supérieure des Affaires (ESA)
-- TogoObjectif : Validation des compétences en manipulation de données et logique POO.
+- Objectif : Validation des compétences en manipulation de données et logique POO.
 
 ## Description du projet 
 
